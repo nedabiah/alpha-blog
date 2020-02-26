@@ -6,23 +6,31 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <% if logged_in? %>
       <li class="nav-item">
-        <a class="nav-link" <%= link_to "Articles", articles_path %> </a>
+        <a class="nav-link" <%= link_to "All Articles", articles_path %> </a>
       </li>
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Actions
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item"<%= link_to "New Article", new_article_path %></a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item"<%= link_to "Create New Article", new_article_path %></a>
+          <a class="dropdown-item" <%= link_to "Edit Your Profile", edit_user_path(current_user) %> </a>
+          <a class="dropdown-item" <%= link_to "View other users", users_path %> </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item"<%= link_to 'Log out',logout_path,  method: :delete %></a>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link" <%= link_to "View Your Profile", user_path(current_user) %> </a>
       </li>
+
+      <% else %>
+      <li><a class="nav-link"<%= link_to 'Log in', login_path%></a></li>
+      <li><a class="nav-link"<%= link_to 'Sign Up', signup_path%></a></li>
+      <% end %>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
