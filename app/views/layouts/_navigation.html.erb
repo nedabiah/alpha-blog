@@ -17,8 +17,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item"<%= link_to "Create New Article", new_article_path %></a>
-          <a class="dropdown-item" <%= link_to "Edit Your Profile", edit_user_path(current_user) %> </a>
+          <a class="dropdown-item" <%= link_to "Your Profile", edit_user_path(current_user) %> </a>
           <a class="dropdown-item" <%= link_to "View other users", users_path %> </a>
+          <a class="dropdown-item" <%= "Admin" if current_user.admin? %> </a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item"<%= link_to 'Log out',logout_path,  method: :delete %></a>
         </div>
@@ -31,10 +32,7 @@
       <li><a class="nav-link"<%= link_to 'Log in', login_path%></a></li>
       <li><a class="nav-link"<%= link_to 'Sign Up', signup_path%></a></li>
       <% end %>
+
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
   </div>
 </nav>
